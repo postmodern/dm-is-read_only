@@ -76,19 +76,4 @@ group :development do
   gem 'yard',		'~> 0.5.3'
 end
 
-group :test do
-  gem 'data_objects',	'~> 0.10.2', :git => "#{datamapper}/do.git"
-  gem 'do_sqlite3',	'~> 0.10.2', :git => "#{datamapper}/do.git"
-
-  if ENV['ADAPTERS']
-    adapters = ENV['ADAPTERS'].split(/\s+/).map { |name|
-      name.downcase
-    }.uniq
-
-    adapters.each do |name|
-      gem "dm-adapter-#{name}",	'~> 0.10.3', :git => "#{datamapper}/dm-adapter-#{name}.git"
-    end
-  end
-end
-
 gem 'rspec',	'~> 1.3.0', :group => [:development, :test]
