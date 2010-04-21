@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
+    "dm-is-read_only.gemspec",
     "lib/dm-is-read_only.rb",
     "lib/dm-is-read_only/is/read_only.rb",
     "lib/dm-is-read_only/is/version.rb",
