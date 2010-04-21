@@ -13,6 +13,8 @@ require 'spec'
 require 'dm-core/spec/lib/spec_helper'
 require 'dm-core/spec/lib/adapter_helpers'
 
+require 'dm-is-read_only'
+
 ENV['ADAPTERS'] ||= 'sqlite3'
 
 # create sqlite3_fs directory if it doesn't exist
