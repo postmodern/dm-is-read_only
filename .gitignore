@@ -1,0 +1,11 @@
+doc
+pkg
+tmp/*
+spec/db
+.DS_Store
+.bundle
+.yardoc
+*.db
+*.log
+*.swp
+*~
