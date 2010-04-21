@@ -54,7 +54,7 @@ module DataMapper
         #   The immutable state.
         #
         def persisted_state
-          @_state = Resource::State::Immutable.new(self)
+          @_state ||= Resource::State::Immutable.new(self)
         end
 
         #
