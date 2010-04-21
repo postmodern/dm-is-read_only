@@ -13,6 +13,15 @@ module DataMapper
       # @option options [Boolean] :mutable
       #   Specifies that the resource should remain mutable.
       #
+      # @example Disable both migrations and mutability
+      #   is :read_only
+      #
+      # @example Do not disable migrations
+      #   is :read_only, :migrations => true
+      #
+      # @example Do not disable mutability
+      #   is :read_only, :mutable => true
+      #
       def is_read_only(options={})
         unless options[:migrations]
           extend DataMapper::Is::ReadOnly::ClassMethods
