@@ -4,9 +4,23 @@ module DataMapper
       #
       # Makes a Model and all resources of the model, read-only.
       #
+      # @param [Hash] options
+      #   Additional options.
+      #
+      # @option options [Boolean] :migrations
+      #   Specifies that migrations should be left enabled.
+      #
+      # @option options [Boolean] :mutable
+      #   Specifies that the resource should remain mutable.
+      #
       def is_read_only(options={})
-        extend DataMapper::Is::ReadOnly::ClassMethods
-        include DataMapper::Is::ReadOnly::InstanceMethods
+        unless options[:migrations]
+          extend DataMapper::Is::ReadOnly::ClassMethods
+        end
+
+        unless options[:mutable]
+          include DataMapper::Is::ReadOnly::InstanceMethods
+        end
       end
 
       module ClassMethods
