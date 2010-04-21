@@ -63,11 +63,11 @@ module DataMapper
         # @param [DataMapper::Resource::State] new_state
         #   The new state to use.
         #
-        # @raise [RuntimeError]
-        #   Always raises a runtime error.
+        # @return [DataMapper::Resource::State::Immutabe]
+        #   Always returns the immutable state.
         #
         def persisted_state=(new_state)
-          raise(RuntimeError,"Cannot forcible change the persistence state of a ReadOnly resource",caller)
+          persisted_state
         end
       end
     end
