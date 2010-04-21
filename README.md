@@ -31,7 +31,7 @@ A DataMapper plugin for making Models absolutely **read-only**.
   
 ## Requirements
 
-* [dm-core](http://github.com/datamapper/dm-core/) >= 0.10.2
+* [dm-core](http://github.com/datamapper/dm-core/) ~> 0.10.3
 
 ## Install
 
