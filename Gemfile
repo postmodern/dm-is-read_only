@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-datamapper = 'git://github.com/datamapper'
+dm = 'git://github.com/datamapper'
 
 group :runtime do
   # We bundle both AS and extlib while extlib compatibility needs to be kept
@@ -62,12 +62,12 @@ group :runtime do
   #
 
   if ENV['EXTLIB']
-    gem 'extlib', '~> 0.9.15', :git => "#{datamapper}/extlib.git"
+    gem 'extlib', '~> 0.9.15', :git => "#{dm}/extlib.git"
   else
     gem 'activesupport', '~> 3.0.0.beta3', :git => 'git://github.com/rails/rails.git', :require => nil
   end
 
-  gem 'dm-core',	'~> 0.10.3', :git => "#{datamapper}/dm-core.git"
+  gem 'dm-core',	'~> 0.10.3', :git => "#{dm}/dm-core.git"
 end
 
 group :development do
@@ -77,10 +77,11 @@ group :development do
 end
 
 group :test do
-  gem 'data_objects',		'~> 0.10.2', :git => "#{datamapper}/do.git"
-  gem 'do_sqlite3',		'~> 0.10.2', :git => "#{datamapper}/do.git"
-  gem 'dm-do-adapter',		'~> 0.10.3', :git => "#{datamapper}/dm-do-adapter.git"
-  gem 'dm-sqlite-adapter',	'~> 0.10.3', :git => "#{datamapper}/dm-sqlite-adapter.git"
+  gem 'data_objects',		'~> 0.10.2', :git => "#{dm}/do.git"
+  gem 'do_sqlite3',		'~> 0.10.2', :git => "#{dm}/do.git"
+  gem 'dm-do-adapter',		'~> 0.10.3', :git => "#{dm}/dm-do-adapter.git"
+  gem 'dm-sqlite-adapter',	'~> 0.10.3', :git => "#{dm}/dm-sqlite-adapter.git"
+  gem 'dm-migrations',		'~> 0.10.3', :git => "#{dm}/dm-migrations.git"
 end
 
 gem 'rspec',	'~> 1.3.0', :group => [:development, :test]
