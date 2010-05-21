@@ -58,15 +58,17 @@ describe DataMapper::Is::ReadOnly do
     end
 
     it "should prevent calling destroy" do
-      lambda {
-        @resource.destroy
-      }.should raise_error()
+      @resource.destroy
+
+      original = BackendModel.first(:value => 'x')
+      original.should_not be_nil
     end
 
     it "should prevent calling destroy!" do
-      lambda {
-        @resource.destroy!
-      }.should raise_error()
+      @resource.destroy!
+
+      original = BackendModel.first(:value => 'x')
+      original.should_not be_nil
     end
 
     it "should have an Immutable persisted state" do
@@ -76,7 +78,7 @@ describe DataMapper::Is::ReadOnly do
     it "should prevent forcibly changing the persisted state" do
       old_state = @resource.persisted_state
 
-      new_state = DataMapper::Resource::State::Mutable.new(@resource)
+      new_state = DataMapper::Resource::State::Transient.new(@resource)
       @resource.persisted_state = new_state
 
       @resource.persisted_state.should == old_state
