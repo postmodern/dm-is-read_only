@@ -11,11 +11,9 @@ end
 
 require 'rake'
 require 'jeweler'
-require './lib/dm-is-read_only/is/version.rb'
 
 Jeweler::Tasks.new do |gem|
   gem.name = 'dm-is-read_only'
-  gem.version = DataMapper::Is::ReadOnly::VERSION
   gem.license = 'MIT'
   gem.summary = %Q{A DataMapper plugin for making Models absolutely read-only.}
   gem.description = %Q{A DataMapper plugin for making Models absolutely read-only.}
