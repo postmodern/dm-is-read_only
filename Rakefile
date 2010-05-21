@@ -22,9 +22,6 @@ Jeweler::Tasks.new do |gem|
   gem.email = 'postmodern.mod3@gmail.com'
   gem.homepage = 'http://github.com/postmodern/dm-is-read_only'
   gem.authors = ['Postmodern']
-  gem.add_dependency 'dm-core', '>= 0.10.2'
-  gem.add_development_dependency 'rspec', '~> 1.3.0'
-  gem.add_development_dependency 'yard', '~> 0.5.3'
   gem.has_rdoc = 'yard'
 end
 
