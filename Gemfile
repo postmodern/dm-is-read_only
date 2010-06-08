@@ -76,6 +76,13 @@ group :development do
 end
 
 group :doc do
+  case RUBY_PLATFORM
+  when 'java'
+    gem 'maruku',	'~> 0.6.0'
+  else
+    gem 'rdiscount',	'~> 1.6.3'
+  end
+
   gem 'yard',		'~> 0.5.3'
 end
 
