@@ -1,6 +1,7 @@
 # dm-is-read_only
 
 * [github.com/postmodern/dm-is-read_only](http://github.com/postmodern/dm-is-read_only)
+* [github.com/postmodern/dm-is-read_only/issues](http://github.com/postmodern/dm-is-read_only/issues)
 * Postmodern (postmodern.mod3 at gmail.com)
 
 ## Description
