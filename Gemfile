@@ -62,12 +62,12 @@ group :runtime do
   #
 
   if ENV['EXTLIB']
-    gem 'extlib', '~> 0.9.15', :git => "#{dm}/extlib.git"
+    gem 'extlib', '~> 0.9.15'
   else
     gem 'activesupport', '~> 3.0.0.beta3', :git => 'git://github.com/rails/rails.git', :require => nil
   end
 
-  gem 'dm-core',	'~> 1.0.0.rc3', :git => "#{dm}/dm-core.git"
+  gem 'dm-core',	'~> 1.0.0'
 end
 
 group :development do
@@ -77,11 +77,11 @@ group :development do
 end
 
 group :test do
-  gem 'data_objects',		'~> 0.10.2', :git => "#{dm}/do.git"
-  gem 'do_sqlite3',		'~> 0.10.2', :git => "#{dm}/do.git"
-  gem 'dm-do-adapter',		'~> 1.0.0.rc3', :git => "#{dm}/dm-do-adapter.git"
-  gem 'dm-sqlite-adapter',	'~> 1.0.0.rc3', :git => "#{dm}/dm-sqlite-adapter.git"
-  gem 'dm-migrations',		'~> 1.0.0.rc3', :git => "#{dm}/dm-migrations.git"
+  gem 'data_objects',		'~> 0.10.2'
+  gem 'do_sqlite3',		'~> 0.10.2'
+  gem 'dm-do-adapter',		'~> 1.0.0'
+  gem 'dm-sqlite-adapter',	'~> 1.0.0'
+  gem 'dm-migrations',		'~> 1.0.0'
 end
 
 gem 'rspec',	'~> 1.3.0', :group => [:development, :test]
