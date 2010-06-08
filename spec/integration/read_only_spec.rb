@@ -4,10 +4,6 @@ require 'classes/backend_model'
 require 'classes/read_only_model'
 
 describe DataMapper::Is::ReadOnly do
-  it "should define a VERSION constant" do
-    DataMapper::Is::ReadOnly.const_defined?('VERSION').should == true
-  end
-
   context "auto_migrate!" do
     before(:all) do
       BackendModel.auto_migrate!
