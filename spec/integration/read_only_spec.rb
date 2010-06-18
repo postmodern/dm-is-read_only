@@ -4,6 +4,26 @@ require 'classes/backend_model'
 require 'classes/read_only_model'
 
 describe DataMapper::Is::ReadOnly do
+  context "migrate!" do
+    before(:all) do
+      BackendModel.auto_migrate!
+
+      ('a'..'z').each do |value|
+        BackendModel.create(:value => value)
+      end
+
+      ReadOnlyModel.migrate!
+    end
+
+    it "should not destroy the contents of the storage table" do
+      ReadOnlyModel.all.length.should == 26
+    end
+
+    it "should still return true" do
+      (ReadOnlyModel.auto_migrate!).should == true
+    end
+  end
+
   context "auto_migrate!" do
     before(:all) do
       BackendModel.auto_migrate!
