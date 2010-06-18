@@ -40,7 +40,7 @@ module DataMapper
         #   Always returns `true`.
         #
         def auto_migrate!(repository_name=nil)
-          return true
+          true
         end
 
         #
@@ -50,7 +50,7 @@ module DataMapper
         #   Always returns `true`.
         #
         def auto_upgrade!(repository_name=nil)
-          return true
+          true
         end
       end
 
