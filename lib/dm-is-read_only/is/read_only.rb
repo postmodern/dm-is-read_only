@@ -34,6 +34,16 @@ module DataMapper
 
       module ClassMethods
         #
+        # Disables migrations.
+        #
+        # @return [true]
+        #   Always returns `true`.
+        #
+        def migrate!(repository_name=nil)
+          true
+        end
+
+        #
         # Disables auto-migrations.
         #
         # @return [true]
