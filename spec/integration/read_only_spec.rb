@@ -99,5 +99,9 @@ describe DataMapper::Is::ReadOnly do
 
       @resource.persisted_state.should == old_state
     end
+
+    it "should report the resource as having already been saved" do
+      @resource.should be_saved
+    end
   end
 end
