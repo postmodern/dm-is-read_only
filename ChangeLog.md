@@ -1,3 +1,9 @@
+### 0.1.1 / 2010-08-11
+
+* Override `saved?` in `DataMapper::Resource` to always return `true`,
+  so that methods such as `save_self` will also return `true`. This allows
+  read-only models to be used in relationships with non-read-only models.
+
 ### 0.1.0 / 2010-06-08
 
 * Initial release.
