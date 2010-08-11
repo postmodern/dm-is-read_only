@@ -88,6 +88,16 @@ module DataMapper
         def persisted_state=(new_state)
           persisted_state
         end
+
+        #
+        # Determines whether the resource has been saved.
+        #
+        # @return [true]
+        #   Always returns true.
+        #
+        def saved?
+          true
+        end
       end
     end
   end
