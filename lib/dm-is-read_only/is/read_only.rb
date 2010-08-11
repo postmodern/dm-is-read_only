@@ -95,6 +95,8 @@ module DataMapper
         # @return [true]
         #   Always returns true.
         #
+        # @since 0.1.1
+        #
         def saved?
           true
         end
