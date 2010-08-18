@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dm-is-read_only}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-08-11}
+  s.date = %q{2010-08-18}
   s.description = %q{A DataMapper plugin for making Models absolutely read-only.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -30,7 +30,9 @@ Gem::Specification.new do |s|
     "VERSION",
     "dm-is-read_only.gemspec",
     "lib/dm-is-read_only.rb",
+    "lib/dm-is-read_only/exceptions/read_only_error.rb",
     "lib/dm-is-read_only/is/read_only.rb",
+    "lib/dm-is-read_only/resource/state/read_only.rb",
     "spec/classes/backend_model.rb",
     "spec/classes/read_only_model.rb",
     "spec/integration/read_only_spec.rb",
