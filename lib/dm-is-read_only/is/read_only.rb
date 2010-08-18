@@ -1,3 +1,5 @@
+require 'dm-is-read_only/resource/state/read_only'
+
 module DataMapper
   module Is
     module ReadOnly
@@ -67,13 +69,13 @@ module DataMapper
       module InstanceMethods
         #
         # Overrides the default `persisted_state` method, to always use
-        # `DataMapper::Resource::State::Immutable`.
+        # {DataMapper::Resource::State::ReadOnly}.
         #
-        # @return [DataMapper::Resource::State::Immutable]
-        #   The immutable state.
+        # @return [DataMapper::Resource::State::ReadOnly]
+        #   The read-only state.
         #
         def persisted_state
-          @_state ||= Resource::State::Immutable.new(self)
+          @_state ||= Resource::State::ReadOnly.new(self)
         end
 
         #
@@ -82,23 +84,11 @@ module DataMapper
         # @param [DataMapper::Resource::State] new_state
         #   The new state to use.
         #
-        # @return [DataMapper::Resource::State::Immutabe]
-        #   Always returns the immutable state.
+        # @return [DataMapper::Resource::State::ReadOnly]
+        #   Always returns the read-only state.
         #
         def persisted_state=(new_state)
           persisted_state
-        end
-
-        #
-        # Determines whether the resource has been saved.
-        #
-        # @return [true]
-        #   Always returns true.
-        #
-        # @since 0.1.1
-        #
-        def saved?
-          true
         end
       end
     end

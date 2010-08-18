@@ -55,40 +55,52 @@ describe DataMapper::Is::ReadOnly do
       @resource = ReadOnlyModel.first(:value => 'x')
     end
 
-    it "should prevent modifying properties" do
+    it "should prevent setting properties" do
       lambda {
         @resource.value = 'z'
-      }.should raise_error()
+      }.should raise_error(DataMapper::ReadOnlyError)
     end
 
-    it "should prevent calling save" do
+    it "should prevent updating resources" do
       lambda {
-        @resource.save
-      }.should raise_error()
+        @resource.update(:value => 'z')
+      }.should raise_error(DataMapper::ReadOnlyError)
     end
 
-    it "should prevent calling save!" do
-      lambda {
-        @resource.save!
-      }.should raise_error()
+    it "should mark read-only resources as saved" do
+      @resource.should be_saved
+    end
+
+    it "should mark read-only resources as clean" do
+      @resource.should be_clean
+    end
+
+    it "should not mark read-only resources as dirty" do
+      @resource.should_not be_dirty
+    end
+
+    it "should return true when calling save" do
+      @resource.save.should == true
+    end
+
+    it "should return true when calling save!" do
+      @resource.save!.should == true
     end
 
     it "should prevent calling destroy" do
-      @resource.destroy
-
-      original = BackendModel.first(:value => 'x')
-      original.should_not be_nil
+      lambda {
+        @resource.destroy
+      }.should raise_error(DataMapper::ReadOnlyError)
     end
 
     it "should prevent calling destroy!" do
-      @resource.destroy!
-
-      original = BackendModel.first(:value => 'x')
-      original.should_not be_nil
+      lambda {
+        @resource.destroy!
+      }.should raise_error(DataMapper::ReadOnlyError)
     end
 
-    it "should have an Immutable persisted state" do
-      @resource.persisted_state.class.should == DataMapper::Resource::State::Immutable
+    it "should have an ReadOnly persisted state" do
+      @resource.persisted_state.class.should == DataMapper::Resource::State::ReadOnly
     end
 
     it "should prevent forcibly changing the persisted state" do
