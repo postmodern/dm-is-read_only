@@ -64,7 +64,7 @@ group :runtime do
   if ENV['EXTLIB']
     gem 'extlib', '~> 0.9.15'
   else
-    gem 'activesupport', '~> 3.0.0.beta3', :require => 'active_support'
+    gem 'activesupport', '~> 3.0.0', :require => 'active_support'
   end
 
   gem 'dm-core',	'~> 1.0.0'
@@ -72,7 +72,7 @@ end
 
 group :development do
   gem 'rake',		'~> 0.8.7'
-  gem 'jeweler',	'~> 1.4.0', :git => 'git://github.com/technicalpickles/jeweler.git'
+  gem 'jeweler',	'~> 1.5.0.pre'
 end
 
 group :doc do
