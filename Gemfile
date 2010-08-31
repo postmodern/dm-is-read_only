@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
-dm = 'git://github.com/datamapper'
+
+DATA_MAPPER = 'git://github.com/datamapper'
+DM_VERSION = '~> 1.0.0'
 
 group :runtime do
   # We bundle both AS and extlib while extlib compatibility needs to be kept
@@ -62,12 +64,12 @@ group :runtime do
   #
 
   if ENV['EXTLIB']
-    gem 'extlib', '~> 0.9.15'
+    gem 'extlib', 		'~> 0.9.15'
   else
-    gem 'activesupport', '~> 3.0.0', :require => 'active_support'
+    gem 'activesupport',	'~> 3.0.0', :require => 'active_support'
   end
 
-  gem 'dm-core',	'~> 1.0.0'
+  gem 'dm-core',	DM_VERSION, :git => "#{DATA_MAPPER}/dm-core.git"
 end
 
 group :development do
@@ -87,11 +89,35 @@ group :doc do
 end
 
 group :test do
-  gem 'data_objects',		'~> 0.10.2'
-  gem 'do_sqlite3',		'~> 0.10.2'
-  gem 'dm-do-adapter',		'~> 1.0.0'
-  gem 'dm-sqlite-adapter',	'~> 1.0.0'
-  gem 'dm-migrations',		'~> 1.0.0'
+  adapters = ENV['ADAPTER'] || ENV['ADAPTERS']
+  adapters = adapters.to_s.gsub(',',' ').split(' ') - ['in_memory']
+
+  unless adapters.empty?
+    DO_VERSION = '~> 0.10.3'
+    DM_DO_ADAPTERS = %w[sqlite postgres mysql oracle sqlserver]
+
+    gem 'data_objects', DO_VERSION, :git => "#{DATA_MAPPER}/do.git"
+
+    adapters.each do |adapter|
+      if DM_DO_ADAPTERS.any? { |dm_do_adapter| dm_do_adapter =~ /#{adapter}/ }
+        adapter = 'sqlite3' if adapter == 'sqlite'
+        gem "do_#{adapter}", DO_VERSION, :git => "#{DATA_MAPPER}/do.git"
+      end
+    end
+
+    gem 'dm-do-adapter', DM_VERSION, :git => "#{DATA_MAPPER}/dm-do-adapter.git"
+
+    adapters.each do |adapter|
+      gem "dm-#{adapter}-adapter", DM_VERSION, :git => "#{DATA_MAPPER}/dm-#{adapter}-adapter.git"
+    end
+  end
+
+  plugins = ENV['PLUGINS'] || ENV['PLUGIN']
+  plugins = plugins.to_s.tr(',', ' ').split.push('dm-migrations').uniq
+
+  plugins.each do |plugin|
+    gem plugin, DM_VERSION, :git => "#{DATA_MAPPER}/#{plugin}.git"
+  end
 end
 
 gem 'rspec',	'~> 1.3.0', :group => [:development, :test]

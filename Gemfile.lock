@@ -1,23 +1,48 @@
+GIT
+  remote: git://github.com/datamapper/dm-core.git
+  revision: 613f0593b92f026469cf171b237b4f3bf3db7ac5
+  specs:
+    dm-core (1.0.0)
+      addressable (~> 2.2)
+      extlib (~> 0.9.15)
+
+GIT
+  remote: git://github.com/datamapper/dm-do-adapter.git
+  revision: 2ca6c8e46428c18789f976955d99847d036fd2bb
+  specs:
+    dm-do-adapter (1.0.0)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.0.0)
+
+GIT
+  remote: git://github.com/datamapper/dm-migrations.git
+  revision: 6fec31c554f4dcc6773abf27896bf28353df29cd
+  specs:
+    dm-migrations (1.0.0)
+      dm-core (~> 1.0.0)
+
+GIT
+  remote: git://github.com/datamapper/dm-sqlite-adapter.git
+  revision: 9842d707a1e2de7c9d79426d480b5550d590f4b7
+  specs:
+    dm-sqlite-adapter (1.0.0)
+      dm-do-adapter (~> 1.0.0)
+      do_sqlite3 (~> 0.10.2)
+
+GIT
+  remote: git://github.com/datamapper/do.git
+  revision: 546eacf131d4c403d27df143c6273f04fdb999bb
+  specs:
+    data_objects (0.10.3)
+      addressable (~> 2.1)
+    do_sqlite3 (0.10.3)
+      data_objects (= 0.10.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
     activesupport (3.0.0)
     addressable (2.2.0)
-    data_objects (0.10.2)
-      addressable (~> 2.1)
-    dm-core (1.0.0)
-      addressable (~> 2.1)
-      extlib (~> 0.9.15)
-    dm-do-adapter (1.0.0)
-      data_objects (~> 0.10.1)
-      dm-core (~> 1.0.0)
-    dm-migrations (1.0.0)
-      dm-core (~> 1.0.0)
-    dm-sqlite-adapter (1.0.0)
-      dm-do-adapter (~> 1.0.0)
-      do_sqlite3 (~> 0.10.2)
-    do_sqlite3 (0.10.2)
-      data_objects (= 0.10.2)
     extlib (0.9.15)
     git (1.2.5)
     jeweler (1.5.0.pre2)
@@ -34,12 +59,12 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (~> 3.0.0)
-  data_objects (~> 0.10.2)
-  dm-core (~> 1.0.0)
-  dm-do-adapter (~> 1.0.0)
-  dm-migrations (~> 1.0.0)
-  dm-sqlite-adapter (~> 1.0.0)
-  do_sqlite3 (~> 0.10.2)
+  data_objects (~> 0.10.3)!
+  dm-core (~> 1.0.0)!
+  dm-do-adapter (~> 1.0.0)!
+  dm-migrations (~> 1.0.0)!
+  dm-sqlite-adapter (~> 1.0.0)!
+  do_sqlite3 (~> 0.10.3)!
   jeweler (~> 1.5.0.pre)
   rake (~> 0.8.7)
   rdiscount (~> 1.6.3)
