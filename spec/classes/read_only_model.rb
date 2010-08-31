@@ -12,4 +12,6 @@ class ReadOnlyModel
 
   property :value, String
 
+  has 0..n, :related_models
+
 end

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 require 'classes/backend_model'
 require 'classes/read_only_model'
+require 'classes/related_model'
 
 describe DataMapper::Is::ReadOnly do
   context "migrate!" do
@@ -49,10 +50,15 @@ describe DataMapper::Is::ReadOnly do
 
   context "immutable" do
     before(:all) do
+      RelatedModel.auto_migrate!
       BackendModel.auto_migrate!
       BackendModel.create(:value => 'x')
 
       @resource = ReadOnlyModel.first(:value => 'x')
+
+      RelatedModel.create(:read_only_model => @resource)
+
+      @related_resource = RelatedModel.first
     end
 
     it "should prevent setting properties" do
@@ -114,6 +120,11 @@ describe DataMapper::Is::ReadOnly do
 
     it "should report the resource as having already been saved" do
       @resource.should be_saved
+    end
+
+    it "should still allow relationships with non-read-only models" do
+      @resource.related_models.first.should == @related_resource
+      @related_resource.read_only_model.should == @resource
     end
   end
 end
