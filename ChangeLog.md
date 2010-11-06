@@ -1,3 +1,12 @@
+### 0.2.0 / 2010-11-05
+
+* Added {DataMapper::Resource::State::ReadOnly}:
+  * Inherits from the `Clean` state.
+  * Raises {DataMapper::ReadOnlyError} exceptions when `set` or `delete`
+    are called.
+* Fixed a bug where read-only resources with relationships were not being
+  loaded.
+
 ### 0.1.1 / 2010-08-11
 
 * Override `saved?` in `DataMapper::Resource` to always return `true`,
