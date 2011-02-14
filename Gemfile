@@ -89,7 +89,7 @@ DM_DO_ADAPTERS = %w[ sqlite postgres mysql oracle sqlserver ]
 RAILS = 'http://github.com/rails/rails.git'
 
 if ENV['EXTLIB']
-  gem 'extlib',		'~> 0.9.15', :git => '#{DATAMAPPER}/extlib.git'
+  gem 'extlib',		      '~> 0.9.15', :git => '#{DATAMAPPER}/extlib.git'
 else
   gem 'activesupport',  '~> 3.0.0', :git => RAILS,
                                     :branch => '3-0-stable',
@@ -99,18 +99,14 @@ end
 gem 'dm-core',	DM_VERSION, :git => "#{DATAMAPPER}/dm-core.git"
 
 group :development do
-  case RUBY_PLATFORM
-  when 'java'
-    gem 'maruku',	'~> 0.6.0'
-  else
-    gem 'rdiscount',	'~> 1.6.3'
-  end
+  gem 'rake',		    '~> 0.8.7'
 
-  gem 'rake',		'~> 0.8.7'
-  gem 'ore-core',	'~> 0.1.0'
-  gem 'ore-tasks',	'~> 0.2.0'
-  gem 'rspec',		'~> 2.0.0'
-  gem 'yard',		'~> 0.6.0'
+  gem 'ore-core',   '~> 0.1.0'
+  gem 'ore-tasks',  '~> 0.2.0'
+  gem 'rspec',		  '~> 2.0.0'
+
+  gem 'kramdown',   '~> 0.12.0'
+  gem 'yard',		    '~> 0.6.0'
 end
 
 group :datamapper do
