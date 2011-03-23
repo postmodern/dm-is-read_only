@@ -1,8 +1,9 @@
 # dm-is-read_only
 
-* [github.com/postmodern/dm-is-read_only](http://github.com/postmodern/dm-is-read_only)
-* [github.com/postmodern/dm-is-read_only/issues](http://github.com/postmodern/dm-is-read_only/issues)
-* Postmodern (postmodern.mod3 at gmail.com)
+* [Source](http://github.com/postmodern/dm-is-read_only)
+* [Issues](http://github.com/postmodern/dm-is-read_only/issues)
+* [Documentation](http://rubydoc.info/gems/dm-is-read_only/frames)
+* [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
