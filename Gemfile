@@ -96,7 +96,7 @@ group :development do
   gem 'ore-tasks',  '~> 0.4'
   gem 'rspec',		  '~> 2.4'
 
-  gem 'kramdown',   '~> 0.12.0'
+  gem 'kramdown',   '~> 0.12'
   gem 'yard',		    '~> 0.6.0'
 end
 
