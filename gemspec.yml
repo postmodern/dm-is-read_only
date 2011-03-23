@@ -1,5 +1,5 @@
 name: dm-is-read_only
-version: 0.2.0
+version: 0.2.1
 summary: DataMapper plugin for making models absolutely read-only.
 description:
   A DataMapper plugin for making models absolutely read-only.
