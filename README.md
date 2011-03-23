@@ -82,5 +82,6 @@ A DataMapper plugin for making Models absolutely **read-only**.
 
 ## License
 
-See {file:LICENSE.txt} for license information.
+Copyright (c) 2010-2011 Hal Brodigan
 
+See {file:LICENSE.txt} for license information.
