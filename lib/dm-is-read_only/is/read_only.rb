@@ -1,4 +1,4 @@
-require 'dm-is-read_only/resource/state/read_only'
+require 'dm-is-read_only/is/read_only/state'
 
 module DataMapper
   module Is
@@ -68,14 +68,14 @@ module DataMapper
 
       module InstanceMethods
         #
-        # Overrides the default `persisted_state` method, to always use
-        # {DataMapper::Resource::State::ReadOnly}.
+        # Overrides the default `persistence_state` method, to always use
+        # {DataMapper::Is::ReadOnly::State}.
         #
-        # @return [DataMapper::Resource::State::ReadOnly]
+        # @return [DataMapper::Is::ReadOnly::State]
         #   The read-only state.
         #
-        def persisted_state
-          @_state ||= Resource::State::ReadOnly.new(self)
+        def persistence_state
+          @_persistence_state ||= DataMapper::Is::ReadOnly::State.new(self)
         end
 
         #
@@ -84,11 +84,11 @@ module DataMapper
         # @param [DataMapper::Resource::State] new_state
         #   The new state to use.
         #
-        # @return [DataMapper::Resource::State::ReadOnly]
+        # @return [DataMapper::Is::ReadOnly::State]
         #   Always returns the read-only state.
         #
-        def persisted_state=(new_state)
-          persisted_state
+        def persistence_state=(new_state)
+          persistence_state
         end
       end
     end

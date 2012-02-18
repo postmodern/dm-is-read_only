@@ -1,12 +1,12 @@
 require 'dm-is-read_only/exceptions/read_only_error'
 
 module DataMapper
-  module Resource
-    class State
+  module Is
+    module ReadOnly
       #
       # A lazy-loaded and unmodifiable resource.
       #
-      class ReadOnly < Clean
+      class State < DataMapper::Resource::PersistenceState::Clean
 
         #
         # Receives modifications attempts on a read-only resource.

@@ -1,42 +1,22 @@
 require 'spec_helper'
 
-require 'classes/backend_model'
-require 'classes/read_only_model'
-require 'classes/related_model'
-
 describe DataMapper::Is::ReadOnly do
-  context "migrate!" do
-    before(:all) do
-      BackendModel.auto_migrate!
-
-      ('a'..'z').each do |value|
-        BackendModel.create(:value => value)
-      end
-
+  describe "migrate!" do
+    it "should not destroy the contents of the storage table" do
       ReadOnlyModel.migrate!
-    end
 
-    it "should not destroy the contents of the storage table" do
       ReadOnlyModel.all.length.should == 26
     end
 
     it "should still return true" do
-      (ReadOnlyModel.auto_migrate!).should == true
+      (ReadOnlyModel.migrate!).should == true
     end
   end
 
-  context "auto_migrate!" do
-    before(:all) do
-      BackendModel.auto_migrate!
-
-      ('a'..'z').each do |value|
-        BackendModel.create(:value => value)
-      end
-
+  describe "auto_migrate!" do
+    it "should not destroy the contents of the storage table" do
       ReadOnlyModel.auto_migrate!
-    end
 
-    it "should not destroy the contents of the storage table" do
       ReadOnlyModel.all.length.should == 26
     end
 
@@ -45,20 +25,26 @@ describe DataMapper::Is::ReadOnly do
     end
   end
 
-  context "auto_upgrade!" do
+  describe "auto_upgrade!" do
   end
 
-  context "immutable" do
-    before(:all) do
-      RelatedModel.auto_migrate!
-      BackendModel.auto_migrate!
-      BackendModel.create(:value => 'x')
+  describe "immutable" do
+    TransientState = if defined?(DataMapper::Resource::PersistenceState)
+                       DataMapper::Resource::PersistenceState::Transient
+                     else
+                       DataMapper::Resource::State::TransientState
+                     end
 
+    before(:all) do
       @resource = ReadOnlyModel.first(:value => 'x')
 
       RelatedModel.create(:read_only_model => @resource)
 
       @related_resource = RelatedModel.first
+    end
+
+    it "should have an ReadOnly persisted state" do
+      @resource.persistence_state.class.should == described_class::State
     end
 
     it "should prevent setting properties" do
@@ -105,17 +91,13 @@ describe DataMapper::Is::ReadOnly do
       }.should raise_error(DataMapper::ReadOnlyError)
     end
 
-    it "should have an ReadOnly persisted state" do
-      @resource.persisted_state.class.should == DataMapper::Resource::State::ReadOnly
-    end
-
     it "should prevent forcibly changing the persisted state" do
-      old_state = @resource.persisted_state
+      old_state = @resource.persistence_state
 
-      new_state = DataMapper::Resource::State::Transient.new(@resource)
-      @resource.persisted_state = new_state
+      new_state = TransientState.new(@resource)
+      @resource.persistence_state = new_state
 
-      @resource.persisted_state.should == old_state
+      @resource.persistence_state.should == old_state
     end
 
     it "should report the resource as having already been saved" do

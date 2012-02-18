@@ -1,4 +1,5 @@
 require 'dm-core'
+require 'dm-is-read_only'
 
 class ReadOnlyModel
 

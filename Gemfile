@@ -83,21 +83,21 @@
 source :rubygems
 
 DATAMAPPER = 'http://github.com/datamapper'
-DM_VERSION = '~> 1.1'
+DM_VERSION = '~> 1.2'
 DO_VERSION = '~> 0.10.2'
 DM_DO_ADAPTERS = %w[ sqlite postgres mysql oracle sqlserver ]
 RAILS = 'http://github.com/rails/rails.git'
 
-gem 'dm-core',	DM_VERSION, :git => "#{DATAMAPPER}/dm-core.git"
+gem 'dm-core',	DM_VERSION #, :git => "#{DATAMAPPER}/dm-core.git"
 
 group :development do
-  gem 'rake',		    '~> 0.8.7'
+  gem 'rake',		    '~> 0.8'
 
   gem 'ore-tasks',  '~> 0.4'
   gem 'rspec',		  '~> 2.4'
 
   gem 'kramdown',   '~> 0.12'
-  gem 'yard',		    '~> 0.6.0'
+  gem 'yard',       '~> 0.7'
 end
 
 group :datamapper do
@@ -118,17 +118,17 @@ group :datamapper do
       gem "do_#{adapter}", DO_VERSION, options.dup
     end
 
-    gem 'dm-do-adapter', DM_VERSION, :git => "#{DATAMAPPER}/dm-do-adapter.git"
+    gem 'dm-do-adapter', DM_VERSION #, :git => "#{DATAMAPPER}/dm-do-adapter.git"
   end
 
   adapters.each do |adapter|
-    gem "dm-#{adapter}-adapter", DM_VERSION, :git => "#{DATAMAPPER}/dm-#{adapter}-adapter.git"
+    gem "dm-#{adapter}-adapter", DM_VERSION #, :git => "#{DATAMAPPER}/dm-#{adapter}-adapter.git"
   end
 
   plugins = ENV['PLUGINS'] || ENV['PLUGIN']
   plugins = plugins.to_s.tr(',', ' ').split.push('dm-migrations').uniq
 
   plugins.each do |plugin|
-    gem plugin, DM_VERSION, :git => "#{DATAMAPPER}/#{plugin}.git"
+    gem plugin, DM_VERSION #, :git => "#{DATAMAPPER}/#{plugin}.git"
   end
 end
