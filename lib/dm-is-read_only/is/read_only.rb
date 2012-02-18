@@ -74,6 +74,8 @@ module DataMapper
         # @return [DataMapper::Is::ReadOnly::State]
         #   The read-only state.
         #
+        # @since 0.3.0
+        #
         def persistence_state
           @_persistence_state ||= DataMapper::Is::ReadOnly::State.new(self)
         end
@@ -86,6 +88,8 @@ module DataMapper
         #
         # @return [DataMapper::Is::ReadOnly::State]
         #   Always returns the read-only state.
+        #
+        # @since 0.3.0
         #
         def persistence_state=(new_state)
           persistence_state
