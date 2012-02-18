@@ -50,13 +50,13 @@ describe DataMapper::Is::ReadOnly do
     it "should prevent setting properties" do
       lambda {
         @resource.value = 'z'
-      }.should raise_error(DataMapper::ReadOnlyError)
+      }.should raise_error(DataMapper::Is::ReadOnly::Error)
     end
 
     it "should prevent updating resources" do
       lambda {
         @resource.update(:value => 'z')
-      }.should raise_error(DataMapper::ReadOnlyError)
+      }.should raise_error(DataMapper::Is::ReadOnly::Error)
     end
 
     it "should mark read-only resources as saved" do
@@ -82,13 +82,13 @@ describe DataMapper::Is::ReadOnly do
     it "should prevent calling destroy" do
       lambda {
         @resource.destroy
-      }.should raise_error(DataMapper::ReadOnlyError)
+      }.should raise_error(DataMapper::Is::ReadOnly::Error)
     end
 
     it "should prevent calling destroy!" do
       lambda {
         @resource.destroy!
-      }.should raise_error(DataMapper::ReadOnlyError)
+      }.should raise_error(DataMapper::Is::ReadOnly::Error)
     end
 
     it "should prevent forcibly changing the persisted state" do

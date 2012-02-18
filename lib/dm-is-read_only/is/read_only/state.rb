@@ -1,4 +1,4 @@
-require 'dm-is-read_only/exceptions/read_only_error'
+require 'dm-is-read_only/is/read_only/exceptions/error'
 
 module DataMapper
   module Is
@@ -17,7 +17,7 @@ module DataMapper
         # @since 0.2.0
         #
         def set(subject,value)
-          raise(ReadOnlyError,"ReadOnly resource cannot be modified",caller)
+          raise(Error,"ReadOnly resource cannot be modified",caller)
         end
 
         #
@@ -29,7 +29,7 @@ module DataMapper
         # @since 0.2.0
         #
         def delete
-          raise(ReadOnlyError,"ReadOnly resource cannot be deleted",caller)
+          raise(Error,"ReadOnly resource cannot be deleted",caller)
         end
 
       end
