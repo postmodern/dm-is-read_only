@@ -1,10 +1,18 @@
+### 0.3.0 / 2012-02-17
+
+* Require dm-core ~> 1.2.
+* Replaced `DataMapper::Resource::State::ReadOnly` with
+  `DataMapper::Is::ReadOnly::State`.
+* Replaced `DataMapper::ReadOnlyError` with
+  `DataMapper::Is::ReadOnly::Error`.
+
 ### 0.2.1 / 2011-03-23
 
 * Require dm-core ~> 1.0.
 
 ### 0.2.0 / 2010-11-05
 
-* Added {DataMapper::Resource::State::ReadOnly}:
+* Added `DataMapper::Resource::State::ReadOnly`:
   * Inherits from the `Clean` state.
   * Raises {DataMapper::ReadOnlyError} exceptions when `set` or `delete`
     are called.
